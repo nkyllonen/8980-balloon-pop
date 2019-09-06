@@ -1,8 +1,17 @@
 /*
+  Nikki Kyllonen - kyllo089
+  CSCI 8980 - Assignment 1 - Balloon Pop
+
+  NOTES:
   1. draw a balloon
   2. move ballon from bottom to top
   3. allow interaction: clicking on balloon? sense collision with another object?
 */
+
+int BG_COLOR = 0;
+final int SCREEN_WIDTH = 640;
+final int SCREEN_HEIGHT = 360;
+int y = SCREEN_HEIGHT;
 
 // The statements in the setup() function 
 // execute once when the program begins
@@ -16,10 +25,18 @@ void setup() {
 // sequence and after the last line is read, the first 
 // line is executed again.
 void draw() {
-  drawBalloon(200, 200, 50); 
+  background(BG_COLOR);
+  
+  y = y - 1;
+
+  if (y < 0) {
+    y = SCREEN_HEIGHT;
+  }
+
+  drawBalloon(200, y, 50); 
 }
 
 // drawBalloon: draw a single ballon at (xloc, yloc)
-void drawBalloon(float xloc, float yloc, int radius) {
+void drawBalloon(int xloc, int yloc, int radius) {
   circle(xloc, yloc, radius);
 }
