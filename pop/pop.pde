@@ -9,10 +9,8 @@
 */
 
 int BG_COLOR = 0;
-final int SCREEN_WIDTH = 640;
-final int SCREEN_HEIGHT = 360;
-int y = SCREEN_HEIGHT;
 int speed = 5;
+int y = 0;
 
 // The statements in the setup() function 
 // execute once when the program begins
@@ -31,7 +29,7 @@ void draw() {
   y = y - speed;
 
   if (y < 0) {
-    y = SCREEN_HEIGHT;
+    y = height;
   }
 
   drawBalloon(200, y, 50);
