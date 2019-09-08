@@ -9,7 +9,7 @@
 */
 
 int BG_COLOR = 0;
-int speed = 5;
+int speed = 1;
 int y = 0;
 
 // The statements in the setup() function 
@@ -40,4 +40,8 @@ void drawBalloon(int xloc, int yloc, int radius) {
   //fill(color);
   fill(204, 102, 0);
   circle(xloc, yloc, radius);
+}
+
+void mouseClicked() {
+  drawBalloon(mouseX, mouseY, 10);
 }
