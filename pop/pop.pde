@@ -9,8 +9,7 @@
 */
 
 int BG_COLOR = 0;
-int speed = 1;
-int y = 0;
+Balloon[] balloons = new Balloon[1];
 
 // The statements in the setup() function 
 // execute once when the program begins
@@ -18,7 +17,10 @@ void setup() {
   size(640, 360);  // Size must be the first statement
   stroke(255);     // Set line drawing color to white
   frameRate(30);
+
+  balloons[0] = new Balloon(200, height, 50, 5);
 }
+
 // The statements in draw() are executed until the 
 // program is stopped. Each statement is executed in 
 // sequence and after the last line is read, the first 
@@ -26,22 +28,42 @@ void setup() {
 void draw() {
   background(BG_COLOR);
   
-  y = y - speed;
+  for (int i = 0; i < balloons.length; i++) {
+    balloons[i].move();
+    balloons[i].display();
+  }
+}
 
-  if (y < 0) {
-    y = height;
+/*void mouseClicked() {
+  drawBalloon(mouseX, mouseY, 10);
+}*/
+
+class Balloon {
+  // member variables -- private?
+  int xpos;
+  int ypos;
+  int radius;
+  int[] rgb = {204, 102, 0};
+  int speed;
+
+  Balloon(int x, int y, int r, int s) {
+    xpos = x;
+    ypos = y;
+    radius = r;
+    speed = s;
   }
 
-  drawBalloon(200, y, 50);
-}
+  void move() {
+    ypos = ypos - speed;
 
-// drawBalloon: draw a single ballon at (xloc, yloc)
-void drawBalloon(int xloc, int yloc, int radius) {
-  //fill(color);
-  fill(204, 102, 0);
-  circle(xloc, yloc, radius);
-}
+    if (ypos < 0) {
+      ypos = height;
+    }
+    
+  }
 
-void mouseClicked() {
-  drawBalloon(mouseX, mouseY, 10);
+  void display() {
+    fill(rgb[0], rgb[1], rgb[2]);
+    circle(xpos, ypos, radius);
+  }
 }
