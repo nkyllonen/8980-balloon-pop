@@ -14,8 +14,8 @@ void setup() {
   stroke(255);     // Set line drawing color to white
   frameRate(30);
 
-  balloons[0] = new Balloon(200, height, 50, 1);
-  brick = new Slider(width/2, height - 20, 50, 10);
+  balloons[0] = new Balloon(200, height, 50, 5);
+  brick = new Slider(width/2, 20, 50, 10);
 }
 
 // The statements in draw() are executed until the 
@@ -28,6 +28,10 @@ void draw() {
   for (int i = 0; i < balloons.length; i++) {
     balloons[i].move();
     balloons[i].display();
+    
+    if (balloons[i].checkCollision(brick)) {
+      balloons[i].rgb[0] = 0;
+    }
   }
 
   brick.display();
@@ -36,11 +40,10 @@ void draw() {
 void mouseClicked() {
   //drawBalloon(mouseX, mouseY, 10);
 
-  // check for click on a balloon
-  for (int i = 0; i < balloons.length; i++) {
-    if (balloons[i].checkCollision(mouseX, mouseY)) {
-      balloons[i].rgb[0] = 0;
-    }
-  }
 }
 
+void keyPressed() {
+  if (key == CODED) {
+    brick.move(keyCode);
+  }
+}

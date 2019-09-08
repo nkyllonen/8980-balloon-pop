@@ -14,8 +14,9 @@ class Slider {
     h = hei;
   }
 
-  void move() {
-
+  void move(int pressedKey) {
+    if (pressedKey == RIGHT) xpos += speed;
+    if (pressedKey == LEFT) xpos -= speed;
   }
 
   void display() {

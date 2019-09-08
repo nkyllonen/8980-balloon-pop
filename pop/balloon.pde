@@ -34,5 +34,12 @@ class Balloon {
     }
     return false;
   }
+
+  boolean checkCollision(Slider s) {
+    float dist = dist(xpos, ypos, s.xpos + s.h, s.ypos);
+
+    if (dist <= radius) return true;
+    else return false;
+  }
 }
 
