@@ -1,11 +1,6 @@
 /*
   Nikki Kyllonen - kyllo089
   CSCI 8980 - Assignment 1 - Balloon Pop
-
-  NOTES:
-  1. draw a balloon
-  2. move ballon from bottom to top
-  3. allow interaction: clicking on balloon? sense collision with another object?
 */
 
 int BG_COLOR = 0;
@@ -18,7 +13,7 @@ void setup() {
   stroke(255);     // Set line drawing color to white
   frameRate(30);
 
-  balloons[0] = new Balloon(200, height, 50, 5);
+  balloons[0] = new Balloon(200, height, 50, 1);
 }
 
 // The statements in draw() are executed until the 
@@ -34,19 +29,30 @@ void draw() {
   }
 }
 
-/*void mouseClicked() {
-  drawBalloon(mouseX, mouseY, 10);
-}*/
+void mouseClicked() {
+  //drawBalloon(mouseX, mouseY, 10);
+
+  // check for click on a balloon
+  for (int i = 0; i < balloons.length; i++) {
+    int r = balloons[i].radius;
+    if (mouseX > balloons[i].xpos - r &&
+        mouseX < balloons[i].xpos + r &&
+        mouseY > balloons[i].ypos - r &&
+        mouseY < balloons[i].ypos + r) {
+      balloons[i].rgb[0] = 0;
+    }
+  }
+}
 
 class Balloon {
   // member variables -- private?
-  int xpos;
-  int ypos;
+  float xpos;
+  float ypos;
   int radius;
   int[] rgb = {204, 102, 0};
-  int speed;
+  float speed;
 
-  Balloon(int x, int y, int r, int s) {
+  Balloon(float x, float y, int r, float s) {
     xpos = x;
     ypos = y;
     radius = r;
