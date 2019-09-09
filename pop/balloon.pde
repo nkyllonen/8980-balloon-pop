@@ -1,14 +1,3 @@
-class Object {
-  // member variables
-  PVector position;
-  PVector rgb = new PVector(0, 102, 50);
-  float speed = 10;
-
-  Object(PVector pos) {
-    position = pos;
-  }
-}
-
 class Balloon extends Object {
   // member variables -- private?
   int radius;
@@ -17,6 +6,7 @@ class Balloon extends Object {
     super(new PVector(x, y));
     speed = s;
     radius = r;
+    rgb = new PVector(100, 0, 50);
   }
 
   void move() {
@@ -48,24 +38,3 @@ class Balloon extends Object {
   }
 }
 
-class Slider extends Object {
-  // member variables
-  float w, h;
-
-  Slider(float x, float y, float wid, float hei) {
-    // call Object superclass constructor
-    super(new PVector(x, y));
-    w = wid;
-    h = hei;
-  }
-
-  void move(int pressedKey) {
-    if (pressedKey == RIGHT) position.x += speed;
-    if (pressedKey == LEFT) position.x -= speed;
-  }
-
-  void display() {
-    fill(rgb.x, rgb.y, rgb.z);
-    rect(position.x, position.y, w, h);
-  }
-}
