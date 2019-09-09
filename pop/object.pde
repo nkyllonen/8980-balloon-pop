@@ -7,4 +7,6 @@ class Object {
   Object(PVector pos) {
     position = pos;
   }
+
+  void display() {}
 }
