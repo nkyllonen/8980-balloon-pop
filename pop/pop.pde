@@ -30,7 +30,7 @@ void draw() {
     balloons[i].display();
     
     if (balloons[i].checkCollision(brick)) {
-      balloons[i].rgb[0] = 0;
+      balloons[i].rgb.x = 0;
     }
   }
 
