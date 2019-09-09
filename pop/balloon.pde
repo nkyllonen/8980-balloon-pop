@@ -11,10 +11,6 @@ class Balloon extends Object {
 
   void move() {
     position.y -= speed;
-
-    if (position.y < 0) {
-      position.y = height;
-    }
   }
 
   void display() {

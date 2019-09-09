@@ -6,7 +6,6 @@
 int BG_COLOR = 0;
 ArrayList<Balloon> balloons = new ArrayList<Balloon>();
 Slider brick;
-ArrayList<Object> worldObjects = new ArrayList<Object>();
 
 // The statements in the setup() function 
 // execute once when the program begins
@@ -15,10 +14,9 @@ void setup() {
   stroke(255);     // Set line drawing color to white
   frameRate(30);
 
-  balloons.add(new Balloon(200, height, 50, 5));
+  balloons.add(new Balloon(200, height, 50, 2));
+  balloons.add(new Balloon(400, height, 20, 5));
   brick = new Slider(width/2, 20, 50, 10);
-  worldObjects.add(balloons.get(0));
-  worldObjects.add(brick);
 }
 
 // The statements in draw() are executed until the 
@@ -28,18 +26,25 @@ void setup() {
 void draw() {
   background(BG_COLOR);
   
+  int index = 0;
   for (Balloon b: balloons) {
     b.move();
-    //balloons[i].display();
-    
+   
+    if (b.position.y <= 0 - b.radius) {
+      balloons.remove(index);
+      break;
+      //continue; // breaks using continue
+    }
+
     if (b.checkCollision(brick)) {
       b.rgb.x = 0;
     }
+
+    index++;
+    b.display();
   }
 
-  for (Object o : worldObjects) {
-    o.display();
-  }
+  brick.display();
 }
 
 void mouseClicked() {
