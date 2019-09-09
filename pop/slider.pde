@@ -1,27 +1,22 @@
-class Slider {
+class Slider extends Object {
   // member variables
-  float xpos; // upperleft x
-  float ypos; // upperleft y
-  float w;
-  float h;
-  int[] rgb = {0, 102, 50};
-  float speed = 10;
+  float w, h;
 
   Slider(float x, float y, float wid, float hei) {
-    xpos = x;
-    ypos = y;
+    // call Object superclass constructor
+    super(new PVector(x, y, 0));
     w = wid;
     h = hei;
   }
 
   void move(int pressedKey) {
-    if (pressedKey == RIGHT) xpos += speed;
-    if (pressedKey == LEFT) xpos -= speed;
+    if (pressedKey == RIGHT) position.x += speed;
+    if (pressedKey == LEFT) position.x -= speed;
   }
 
   void display() {
-    fill(rgb[0], rgb[1], rgb[2]);
-    rect(xpos, ypos, w, h); 
+    fill(color.x, color.y, color.z);
+    rect(position.x, position.y, w, h);
   }
 
 }
