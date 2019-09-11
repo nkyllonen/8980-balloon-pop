@@ -1,5 +1,10 @@
+/*
+  Nikki Kyllonen - kyllo089
+  CSCI 8980 - Assignment 1 - Balloon Pop
+*/
+
 class Balloon extends Object {
-  // member variables -- private?
+  // member variables -- public
   int radius;
 
   Balloon(float x, float y, int r, float s) {
@@ -33,4 +38,3 @@ class Balloon extends Object {
     else return false;
   }
 }
-

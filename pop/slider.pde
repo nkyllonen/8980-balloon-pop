@@ -1,3 +1,8 @@
+/*
+  Nikki Kyllonen - kyllo089
+  CSCI 8980 - Assignment 1 - Balloon Pop
+*/
+
 class Slider extends Object {
   // member variables
   float w, h;
@@ -19,4 +24,3 @@ class Slider extends Object {
     rect(position.x, position.y, w, h);
   }
 }
-

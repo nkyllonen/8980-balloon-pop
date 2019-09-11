@@ -1,3 +1,8 @@
+/*
+  Nikki Kyllonen - kyllo089
+  CSCI 8980 - Assignment 1 - Balloon Pop
+*/
+
 class Object {
   // member variables
   PVector position;
