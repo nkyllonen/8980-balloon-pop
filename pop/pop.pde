@@ -8,7 +8,7 @@
 void setup() {
   size(640, 360);  // Size must be the first statement
   stroke(255);     // Set line drawing color to white
-  frameRate(40);
+  frameRate(30);
 
   brick = new Slider(width/2, 2*brickHeight, brickWidth, brickHeight);
 }
@@ -26,28 +26,30 @@ void draw() {
     lastSpawn = millis();
   }
   
-  int index = 0;
-  for (Balloon b: balloons) {
+  boolean[] toRemove = new boolean[balloons.size()];
+  for (int i = 0; i < balloons.size(); i++) {
+    Balloon b = balloons.get(i);
     b.move();
    
     if (b.position.y <= 0 - b.radius) {
-      balloons.remove(index);
-      break;
-      //continue; // NOTE: "ConcurrentModificationException" if using continue
+      toRemove[i] = true;
     }
 
     // if this balloon collides with the slider
     if (b.checkCollision(brick)) {
-      balloons.remove(index);
+      toRemove[i] = true;
       score++;
-      break;
     }
-
-    index++;
-    b.display();
   }
 
-  brick.display();
+  // remove balloons marked for removal
+  for (int i = 0; i < toRemove.length; i++) {
+    if (toRemove[i] == true) balloons.remove(i);
+  }
+  
+  // draw the remaining balloons
+  for (Balloon b: balloons) {b.display();}
 
+  brick.display();
   displayText();
 }
