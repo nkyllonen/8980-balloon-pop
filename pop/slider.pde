@@ -17,6 +17,10 @@ class Slider extends Object {
   void move(int pressedKey) {
     if (pressedKey == RIGHT) position.x += speed;
     if (pressedKey == LEFT) position.x -= speed;
+
+    // check bounds
+    if (position.x + w > width) position.x -= w/2;
+    if (position.x < 0) position.x += w/2;
   }
 
   void display() {
