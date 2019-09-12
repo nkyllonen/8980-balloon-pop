@@ -7,11 +7,12 @@ class Balloon extends Object {
   // member variables -- public
   int radius;
 
-  Balloon(float x, float y, int r, float s) {
+  Balloon(float x, float y, int r, float s, PVector c) {
     super(new PVector(x, y));
     speed = s;
     radius = r;
-    rgb = new PVector(100, 0, 50);
+    //rgb = new PVector(100, 0, 50);
+    rgb = c;
   }
 
   void move() {

@@ -19,6 +19,8 @@ void setup() {
 // line is executed again.
 void draw() {
   background(BG_COLOR);
+
+  // spawn new balloons
   if (millis() - lastSpawn >= SPAWN_RATE) {
     spawnBalloons(MIN_BALLOONS);
     lastSpawn = millis();
@@ -36,8 +38,8 @@ void draw() {
 
     // if this balloon collides with the slider
     if (b.checkCollision(brick)) {
-      //b.rgb.x = 0;
       balloons.remove(index);
+      score++;
       break;
     }
 
@@ -46,4 +48,6 @@ void draw() {
   }
 
   brick.display();
+
+  displayText();
 }
