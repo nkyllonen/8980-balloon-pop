@@ -62,13 +62,13 @@ void keyPressed() {
 
 void spawnBalloons() {
   float randx = 200;
-  float randr = 50;
+  int randr = 50;
   float rands = 2;
   
   for (int i = 0; i < MAX_BALLOONS; i++) {
     randx = random(0, width);
     randr = (int)random(20, 50);
-    rands = random(2, 10);
+    rands = random(2, 7);
     balloons.add(new Balloon(randx, height, randr, rands));
   }
 }
