@@ -12,7 +12,7 @@ int MAX_SPEED = 5;
 int SPAWN_RATE = 700;
 int lastSpawn = 0;
 ArrayList<Balloon> balloons = new ArrayList<Balloon>();
-Node root = new Node();
+Node root = new Node(width/2.0);
 
 // Player
 Slider brick;
