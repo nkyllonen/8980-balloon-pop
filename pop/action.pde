@@ -19,7 +19,7 @@ void spawnBalloons(int num) {
   for (int i = 0; i < num; i++) {
     randx = random(0, width);
     randr = (int)random(20, 50);
-    rands = random(2, MAX_SPEED);
+    rands = random(75, MAX_SPEED);
     randc = COLORS[(int)random(0, COLORS.length)];
     balloons.add(new Balloon(randx, height, randr, rands, new PVector(randc[0], randc[1], randc[2])));
   }

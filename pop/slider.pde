@@ -9,14 +9,20 @@ class Slider extends Object {
 
   Slider(float x, float y, float wid, float hei) {
     // call Object superclass constructor
-    super(new PVector(x, y));
+    super(new PVector(x, y), millis());
     w = wid;
     h = hei;
   }
 
   void move(int pressedKey) {
-    if (pressedKey == RIGHT) position.x += speed;
-    if (pressedKey == LEFT) position.x -= speed;
+    if (pressedKey == RIGHT) {
+      position.x += speed * (1.0/1000.0)*(millis() - lastSpawn);
+      lastSpawn = millis();
+    }
+    if (pressedKey == LEFT) {
+      position.x -= speed * (1.0/1000.0)*(millis() - lastSpawn);
+      lastSpawn = millis();
+    }
 
     // check bounds
     if (position.x + w > width) position.x -= w/2;

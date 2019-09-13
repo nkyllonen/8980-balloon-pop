@@ -8,7 +8,7 @@ class Balloon extends Object {
   int radius;
 
   Balloon(float x, float y, int r, float s, PVector c) {
-    super(new PVector(x, y));
+    super(new PVector(x, y), millis());
     speed = s;
     radius = r;
     //rgb = new PVector(100, 0, 50);
@@ -16,7 +16,8 @@ class Balloon extends Object {
   }
 
   void move() {
-    position.y -= speed;
+    position.y -= speed * (1.0/1000.0)*(millis() - lastSpawn);
+    lastSpawn = millis();
   }
 
   void display() {

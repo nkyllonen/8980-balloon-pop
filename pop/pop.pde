@@ -6,9 +6,9 @@
 // The statements in the setup() function 
 // execute once when the program begins
 void setup() {
-  size(640, 360);  // Size must be the first statement
+  size(800, 500);  // Size must be the first statement
   stroke(255);     // Set line drawing color to white
-  frameRate(30);
+  frameRate(2);
 
   brick = new Slider(width/2, 2*brickHeight, brickWidth, brickHeight);
 }
