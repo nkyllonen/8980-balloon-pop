@@ -11,7 +11,6 @@ class Balloon extends Object {
     super(new PVector(x, y), millis());
     speed = s;
     radius = r;
-    //rgb = new PVector(100, 0, 50);
     rgb = c;
   }
 
@@ -34,9 +33,11 @@ class Balloon extends Object {
   }
 
   boolean checkCollision(Slider s) {
-    float dist = dist(position.x, position.y, s.position.x + s.h, s.position.y);
+    // distance between center and slider bottom corners
+    float bottomLeft = dist(position.x, position.y, s.position.x, s.position.y + s.h);
+    float bottomRight = dist(position.x, position.y, s.position.x + s.w, s.position.y + s.h);
 
-    if (dist <= radius) return true;
+    if (bottomLeft <= radius || bottomRight <= radius) return true;
     else return false;
   }
 }

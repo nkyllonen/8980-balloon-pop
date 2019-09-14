@@ -19,12 +19,12 @@ class Slider extends Object {
       position.x += speed * (1.0/1000.0)*(millis() - lastSpawn);
       lastSpawn = millis();
     }
-    if (pressedKey == LEFT) {
+    else if (pressedKey == LEFT) {
       position.x -= speed * (1.0/1000.0)*(millis() - lastSpawn);
       lastSpawn = millis();
     }
 
-    // check bounds
+    // check bounds -- bounce off sidewalls
     if (position.x + w > width) position.x -= w/2;
     if (position.x < 0) position.x += w/2;
   }

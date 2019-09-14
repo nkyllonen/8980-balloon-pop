@@ -25,6 +25,12 @@ void draw() {
     spawnBalloons(MIN_BALLOONS);
     lastSpawn = millis();
   }
+
+  // place balloons into grid
+  if (balloons.size() > 0) {
+    grid = new Grid(GRIDCELL_WIDTH, GRIDCELL_HEIGHT);
+    grid.buildGrid();
+  }
   
   boolean[] toRemove = new boolean[balloons.size()];
   for (int i = 0; i < balloons.size(); i++) {
