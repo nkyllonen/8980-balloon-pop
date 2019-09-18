@@ -8,7 +8,7 @@
 void setup() {
   size(800, 500);  // Size must be the first statement
   stroke(255);     // Set line drawing color to white
-  frameRate(2);
+  frameRate(30);
 
   brick = new Slider(width/2, 2*brickHeight, brickWidth, brickHeight);
 }
@@ -27,10 +27,10 @@ void draw() {
   }
 
   // place balloons into grid
-  if (balloons.size() > 0) {
-    grid = new Grid(GRIDCELL_WIDTH, GRIDCELL_HEIGHT);
-    grid.buildGrid();
-  }
+  //if (balloons.size() > 0) {
+  //  grid = new Grid(GRIDCELL_WIDTH, GRIDCELL_HEIGHT);
+  //  grid.buildGrid();
+  //}
   
   boolean[] toRemove = new boolean[balloons.size()];
   for (int i = 0; i < balloons.size(); i++) {

@@ -12,15 +12,18 @@ class Slider extends Object {
     super(new PVector(x, y), millis());
     w = wid;
     h = hei;
+    speed = 5;
   }
 
   void move(int pressedKey) {
     if (pressedKey == RIGHT) {
-      position.x += speed * (1.0/1000.0)*(millis() - lastSpawn);
+      //position.x += speed * (1.0/1000.0)*(millis() - lastSpawn);
+      position.x += speed;
       lastSpawn = millis();
     }
     else if (pressedKey == LEFT) {
-      position.x -= speed * (1.0/1000.0)*(millis() - lastSpawn);
+      //position.x -= speed * (1.0/1000.0)*(millis() - lastSpawn);
+      position.x -= speed;
       lastSpawn = millis();
     }
 
