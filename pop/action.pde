@@ -2,14 +2,14 @@
   Nikki Kyllonen - kyllo089
   CSCI 8980 - Assignment 1 - Balloon Pop
 */
-//
+// handle keyboard presses
 void keyPressed() {
   if (key == CODED) {
     brick.move(keyCode);
   }
 }
 
-//
+// randomize x position, radius, speed, and color
 void spawnBalloons(int num) {
   float randx = 200;
   int randr = 50;
@@ -25,9 +25,19 @@ void spawnBalloons(int num) {
   }
 }
 
-//
-void displayText() {
+// display stat values as text
+void displayStats() {
+  textAlign(LEFT);
   fill(255);
   textSize(18);
+  text("LEVEL: " + level, 10, height-30);
   text("SCORE: " + score, 10, height-10);
+}
+
+// display level up splash screen
+void displayLevelUp() {
+  textAlign(CENTER);
+  fill(255);
+  textSize(50);
+  text("LEVEL UP!", width/2, height/2);
 }
