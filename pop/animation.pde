@@ -1,4 +1,4 @@
-// From Animated Sprite Processing Tutorial
+// Mostly from Animated Sprite Processing Tutorial
 // https://processing.org/examples/animatedsprite.html
 
 // Class for animating a sequence of GIFs
@@ -12,12 +12,6 @@ class Animation {
     position = p;
     images = frames;
     imageCount = frames.length;
-
-    /*for (int i = 0; i < imageCount; i++) {
-      // Use nf() to number format 'i' into four digits
-      String filename = imagePrefix + nf(i+1, 3) + ".gif";
-      images[i] = loadImage(filename);
-    }*/
   }
 
   void display() {
@@ -30,6 +24,7 @@ class Animation {
   }
 }
 
+// load in gif frames
 PImage[] loadFrames(String imagePrefix, int count) {
   PImage[] images = new PImage[count];
 

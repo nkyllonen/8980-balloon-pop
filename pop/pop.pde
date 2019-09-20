@@ -8,7 +8,7 @@
 void setup() {
   size(800, 500);     // Size must be the first statement
   stroke(255);        // Set line drawing color to white
-  frameRate(10);
+  frameRate(30);
   imageMode(CENTER);  // image() will use the center
 
   brick = new Slider(width/2, 2*brickHeight, brickWidth, brickHeight);
@@ -49,9 +49,7 @@ void draw() {
       score++;
 
       // display pop animation
-      //popAnimation.display(b.position.x, b.position.y);
-      //animations.add(new Animation(b.position.copy(), popFrames, popFrames.length));
-      animations.add(new Animation(new PVector(b.position.x, b.position.y), popFrames));
+      animations.add(new Animation(b.position.copy(), popFrames));
     }
   }
 
