@@ -12,6 +12,9 @@ int MAX_SPEED = 150;
 int SPAWN_RATE = 700;
 int lastSpawn = 0;
 ArrayList<Balloon> balloons = new ArrayList<Balloon>();
+Animation popAnimation;
+
+// Spatial Data Struture(s)
 //Node root = new Node(width/2.0);
 Grid grid;
 int GRIDCELL_WIDTH = 100;

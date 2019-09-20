@@ -6,11 +6,13 @@
 // The statements in the setup() function 
 // execute once when the program begins
 void setup() {
-  size(800, 500);  // Size must be the first statement
-  stroke(255);     // Set line drawing color to white
-  frameRate(30);
+  size(800, 500);     // Size must be the first statement
+  stroke(255);        // Set line drawing color to white
+  frameRate(2);
+  imageMode(CENTER);  // image() will use the center
 
   brick = new Slider(width/2, 2*brickHeight, brickWidth, brickHeight);
+  popAnimation = new Animation("./images/sparkles/pop-sparkles",7);
 }
 
 // The statements in draw() are executed until the 
@@ -45,6 +47,9 @@ void draw() {
     if (b.checkCollision(brick)) {
       toRemove[i] = true;
       score++;
+
+      // display pop animation
+      popAnimation.display(b.position.x, b.position.y);
     }
   }
 
