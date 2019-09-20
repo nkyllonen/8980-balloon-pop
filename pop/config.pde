@@ -12,7 +12,8 @@ int MAX_SPEED = 150;
 int SPAWN_RATE = 700;
 int lastSpawn = 0;
 ArrayList<Balloon> balloons = new ArrayList<Balloon>();
-Animation popAnimation;
+PImage[] popFrames;
+ArrayList<Animation> animations = new ArrayList<Animation>();
 
 // Spatial Data Struture(s)
 //Node root = new Node(width/2.0);

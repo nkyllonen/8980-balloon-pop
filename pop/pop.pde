@@ -8,11 +8,11 @@
 void setup() {
   size(800, 500);     // Size must be the first statement
   stroke(255);        // Set line drawing color to white
-  frameRate(2);
+  frameRate(10);
   imageMode(CENTER);  // image() will use the center
 
   brick = new Slider(width/2, 2*brickHeight, brickWidth, brickHeight);
-  popAnimation = new Animation("./images/sparkles/pop-sparkles",7);
+  popFrames = loadFrames("./images/sparkles0.5/pop-sparkles",8);
 }
 
 // The statements in draw() are executed until the 
@@ -49,7 +49,9 @@ void draw() {
       score++;
 
       // display pop animation
-      popAnimation.display(b.position.x, b.position.y);
+      //popAnimation.display(b.position.x, b.position.y);
+      //animations.add(new Animation(b.position.copy(), popFrames, popFrames.length));
+      animations.add(new Animation(new PVector(b.position.x, b.position.y), popFrames));
     }
   }
 
@@ -60,6 +62,19 @@ void draw() {
   
   // draw the remaining balloons
   for (Balloon b: balloons) {b.display();}
+
+  // prune animations, display remaining animations
+  int i = 0;
+  while (i < animations.size()) {
+    Animation a = animations.get(i);
+
+    // do not increment i if removing
+    if (a.frame > a.imageCount - 1) animations.remove(i);
+    else {
+      a.display();
+      i++;
+    }
+  }
 
   brick.display();
   displayText();
