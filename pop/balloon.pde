@@ -6,6 +6,8 @@
 class Balloon extends Object {
   // member variables -- public
   int radius;
+  boolean active = true;
+  boolean evil = false;
 
   Balloon(float x, float y, int r, float s, PVector c) {
     super(new PVector(x, y), millis());
@@ -15,13 +17,17 @@ class Balloon extends Object {
   }
 
   void move() {
-    position.y -= speed * (1.0/1000.0)*(millis() - lastSpawn);
-    lastSpawn = millis();
+    if (active) {
+      position.y -= speed * (1.0/1000.0)*(millis() - lastSpawn);
+      lastSpawn = millis();
+    }
   }
 
   void display() {
-    fill(rgb.x, rgb.y, rgb.z);
-    circle(position.x, position.y, radius*2);
+    if (active) {
+      fill(rgb.x, rgb.y, rgb.z);
+      circle(position.x, position.y, radius*2);
+    }
   }
 
   boolean checkCollision(float x, float y) {

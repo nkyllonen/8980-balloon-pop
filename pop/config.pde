@@ -17,6 +17,8 @@ ArrayList<Animation> animations = new ArrayList<Animation>();
 
 // Evil balloons
 Balloon[] enemies = new Balloon[5];
+float ENEMY_SPAWN_CHANCE = 0.05;
+PImage[] hotFrames;
 
 // Spatial Data Struture(s)
 //Node root = new Node(width/2.0);

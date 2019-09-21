@@ -13,6 +13,7 @@ void setup() {
 
   brick = new Slider(width/2, 2*brickHeight, brickWidth, brickHeight);
   popFrames = loadFrames("./images/sparkles0.5/pop-sparkles",8);
+  hotFrames = loadFrames("./images/hot-0.5/hot", 11);
 }
 
 // The statements in draw() are executed until the 
@@ -54,46 +55,24 @@ void draw() {
       }
 
       // if this balloon collides with the slider
-      if (b.checkCollision(brick)) {
-        balloons.remove(i);
-        score++;
+      if (b.checkCollision(brick)) {        
+        if (!b.evil) {
+          animations.add(new Animation(b.position.copy(), popFrames));
+          score++;
+        }
+        else {
+          animations.add(new Animation(b.position.copy(), hotFrames));
+          score--;
+        }
 
-        // display pop animation
-        animations.add(new Animation(b.position.copy(), popFrames));
+        balloons.remove(i);
         continue;
       }
 
       // only increment if we didn't have to remove
       b.display();
       i++;
-    }
-    
-    // boolean[] toRemove = new boolean[balloons.size()];
-    // for (int i = 0; i < balloons.size(); i++) {
-    //   Balloon b = balloons.get(i);
-    //   b.move();
-    
-    //   if (b.position.y <= 0 - b.radius) {
-    //     toRemove[i] = true;
-    //   }
-
-    //   // if this balloon collides with the slider
-    //   if (b.checkCollision(brick)) {
-    //     toRemove[i] = true;
-    //     score++;
-
-    //     // display pop animation
-    //     animations.add(new Animation(b.position.copy(), popFrames));
-    //   }
-    // }
-
-    // // remove balloons marked for removal
-    // for (int i = 0; i < toRemove.length; i++) {
-    //   if (toRemove[i] == true) balloons.remove(i);
-    // }
-    
-    // // draw the remaining balloons
-    // for (Balloon b: balloons) {b.display();}
+    } // WHILE balloons
 
     // prune animations, display remaining animations
     i = 0;
@@ -120,7 +99,7 @@ void draw() {
 
   // check score and update level
   level = score / 10 + 1;
-  // MIN_BALLOONS = level;
   MAX_SPEED = 150 + level * 10;
   brick.speed = 5 + level;
+  ENEMY_SPAWN_CHANCE = 0.05 + level * 0.05;
 } // END draw()
