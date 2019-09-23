@@ -15,6 +15,11 @@ ArrayList<Balloon> balloons = new ArrayList<Balloon>();
 PImage[] popFrames;
 ArrayList<Animation> animations = new ArrayList<Animation>();
 
+// Evil balloons
+Balloon[] enemies = new Balloon[5];
+float ENEMY_SPAWN_CHANCE = 0.05;
+PImage[] hotFrames;
+
 // Spatial Data Struture(s)
 //Node root = new Node(width/2.0);
 Grid grid;
@@ -26,3 +31,6 @@ Slider brick;
 int brickWidth = 50;
 int brickHeight = 10;
 int score = 0;
+int level = 1;
+boolean levelUpScreen = false;
+int splashStart = 0;
